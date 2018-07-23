@@ -1,0 +1,16 @@
+var getImageUrl = function(list) {
+  var data;
+  list.forEach(function(item){
+    if (item.type === 2){
+      data = item;
+    }
+  });
+  if (data) {
+    return data.show_image_url;
+  } else {
+    return '';
+  }
+}
+module.exports = {
+  getImageUrl: getImageUrl
+}

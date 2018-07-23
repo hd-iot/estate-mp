@@ -1,0 +1,35 @@
+<!--pages/search/search.wxml-->
+<view>
+  <form bindsubmit="formSubmit" class='search-form'>
+    <view class="search-box">
+      <input name="input" value="{{searchKey}}" confirm-type="search" bindconfirm="formSubmit" bindinput="bindInput" id="search" focus placeholder="请输入楼盘名称" />
+    </view>
+  </form>
+  <view class='history-box' wx:if="{{!hasSearched}}">
+    <view class='title'>
+      <text>历史记录</text>
+    </view>
+    <view class='search-his'>
+    <text wx:for="{{searchWords}}" bindtap='doSearch(item)' wx:key="{{idx}}" >{{item}}</text>
+    </view>
+  </view>
+  <view class='result-box' wx:if="{{hasSearched}}">
+    <view class='title'>
+      <text>共找到{{total}}个结果</text>
+    </view>
+    <view class='results'>
+      <navigator hover-class="none" class='result-item' wx:for="{{list}}" wx:key="{{item.domain}}">
+        <view class='thumbnail '>
+          <image wx:if="{{item.photo}}" src="{{item.photo}}"></image>
+        </view>
+        <view class='info'>
+          <text class='name'>{{item.name}}</text>
+          <text class='addr'>{{item.address}}</text>
+          <view class='tips-box'>
+            <text class='tip' wx:for="{{item.homelabel}}" wx:for-index="idx" wx:for-item="label" wx:key="idx">{{label}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

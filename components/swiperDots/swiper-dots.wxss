@@ -1,0 +1,26 @@
+/* components/swiperDots/swiper-dots.wxss */
+
+.dot-list {
+  display: flex;
+  justify-content: center;
+  padding-top: 13rpx;
+  background: #fff;
+}
+
+.dot-list .dot {
+  width: 14rpx;
+  height: 14rpx;
+  background-color: #e6e6e6;
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s ease-in;
+}
+
+.dot-list .dot.active {
+  width: 36rpx;
+  border-radius: 7rpx;
+}
+
+.dot-list .dot+.dot {
+  margin-left: 12.5rpx;
+}

@@ -1,0 +1,63 @@
+<!--index.wxml-->
+
+<view class="container">
+  <wxs module="filter" src="../../utils/filter.wxs"></wxs>
+  <view class="tool-bar">
+    <navigator url="/page/navigate/navigate?title=navigate" hover-class="none">深圳
+      <view class='drop_arrow'></view>
+    </navigator>
+    <image class='logo' src='{{logo}}'></image>
+    <navigator class='search' url="/pages/search/search" hover-class="none">
+      <icon type="search" size="22" />
+    </navigator>
+    
+  </view>
+  <view wx:if="{{bannerList.length}}" class='banner-box'>
+    <swiper class='banner-swiper' autoplay='true' interval='3000' circular="true" bindchange="bannerChange">
+      <block wx:for="{{bannerList}}" wx:key="{{item.id}}">
+        <swiper-item>
+          <image src="{{item.image_list[0].show_image_url}}" width="100%"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <swiper-dots style="width:100%;" current="{{current}}"></swiper-dots>
+    <view class='banner-des'>
+      <text>{{bannerDes}}</text>
+    </view>
+  </view>
+
+  <view class='hot-box' wx:if="{{hotProjects.length}}">
+    <text class='hot-box-title'>热门楼盘推荐</text>
+    <swiper class='hot-swiper' previous-margin="{{prev+'rpx'}}" next-margin="{{next+'rpx'}}" bindchange="hotChange" duration="1000">
+      <block wx:for="{{hotProjects}}" wx:key="{{item.id}}">
+        <swiper-item>
+          <image src="{{item.show_image_url}}" width="100%"></image>
+          <text>{{item.name}}</text>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='project-box' wx:if="{{projectList.length}}">
+    <text class='t1'>北京市恒大楼盘</text>
+    <block wx:for="{{projectList}}" wx:key="{{item.id}}">
+      <view class='project-item'>
+        <navigator url="/page/navigate/navigate?title=navigate" hover-class="none">
+          <image class='project-image' src="{{filter.getImageUrl(item.image_list)}}"></image>
+          <view class='con'>
+            <view class='t2'>
+              <text>{{item.name}}</text>
+            </view>
+            <view class='summary'>
+              <text>{{item.address}}</text>
+            </view>
+            <view class='tips-box'>
+              <text wx:for="{{item.homelabel}}" wx:for-index="idx" wx:for-item="label" wx:key="idx" class='tip'>{{label}}</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </block>
+
+  </view>
+
+</view>

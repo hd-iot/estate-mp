@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "swiper-dots": "/components/swiperDots/swiper-dots"
+  }
+}
