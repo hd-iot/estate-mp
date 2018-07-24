@@ -3,11 +3,11 @@
 <view class="container">
   <wxs module="filter" src="../../utils/filter.wxs"></wxs>
   <view class="tool-bar">
-    <navigator url="/page/navigate/navigate?title=navigate" hover-class="none">深圳
+    <navigator class='loc' url="/pages/city/city?title=navigate" hover-class="none">{{city.name}}
       <view class='drop_arrow'></view>
     </navigator>
     <image class='logo' src='{{logo}}'></image>
-    <navigator class='search' url="/pages/search/search" hover-class="none">
+    <navigator class='search' url="/pages/search/search?title=navigate" hover-class="none">
       <icon type="search" size="22" />
     </navigator>
     
@@ -38,14 +38,15 @@
     </swiper>
   </view>
   <view class='project-box' wx:if="{{projectList.length}}">
-    <text class='t1'>北京市恒大楼盘</text>
+    <text class='t1'>{{city.name}}恒大楼盘</text>
     <block wx:for="{{projectList}}" wx:key="{{item.id}}">
       <view class='project-item'>
-        <navigator url="/page/navigate/navigate?title=navigate" hover-class="none">
+        <navigator url="{{'/pages/detail/detail?title=navigate&domain='+item.domain}}" hover-class="none">
           <image class='project-image' src="{{filter.getImageUrl(item.image_list)}}"></image>
           <view class='con'>
             <view class='t2'>
               <text>{{item.name}}</text>
+              <view class='tel' data-tel="{{item.tel}}" bindtap='toTel' wx:if="{{item.tel}}"></view>
             </view>
             <view class='summary'>
               <text>{{item.address}}</text>

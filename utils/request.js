@@ -1,4 +1,4 @@
-const PREFIX = 'https://devhouse.evergrande.cn/api/index.php/';
+const PREFIX = 'http://house-mobile.evergrande.cn/api/index.php/';
 //封装Request请求方法
 function requst(url, method, data = {},header = {}) {
   wx.showNavigationBarLoading();

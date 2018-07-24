@@ -1,0 +1,27 @@
+<!--pages/city/city.wxml-->
+<view>
+  <view class='local-city'>
+    <text class='h2'>当前定位城市</text>
+    <view class='loc'>
+      <view class='icon'></view>
+      <text>{{city.name ? city.name : '--'}}</text>
+    </view>
+  </view>
+  <view class='gps' wx:if="{{inList}}">
+    <text class='h2'>GPS定位</text>
+    <view bindtap='onClickCity'>
+      <text class='city'>{{geo.name}}</text>
+    </view>
+
+  </view>
+  <view id="cc-list">
+    <view class='city-box' wx:for="{{list}}" wx:key="{{item.name}}">
+      <text class='h2'>{{item.name}}</text>
+      <view class='citys'>
+        <view class='city' wx:for="{{item.citys}}" wx:for-index="idx" wx:for-item="city" wx:key="{{idx}}" data-city="{{city}}" bindtap='onClickCity'>
+          <text>{{city.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -75,7 +75,14 @@ Page({
   onShareAppMessage: function() {
 
   },
+  clickSearch(e){
+    var key = e.currentTarget.dataset.key;
+    this.doSearch(key);
+  },
   doSearch: function(key) {
+    this.setData({
+      hasSearched: true
+    });
     fetch('project/lists?page=1', 'POST', {
       name: key,
       limit: 100,
@@ -107,15 +114,15 @@ Page({
     })
   },
   formSubmit: function() {
-    this.saveSearchkey();
     this.doSearch(this.data.searchKey);
+    this.saveSearchkey();
   },
   saveSearchkey: function() {
     if (!this.data.searchKey) {
       return;
     }
     var arry = JSON.parse(JSON.stringify(this.data.searchWords));
-    if (arry.indexOf(this.data.searchKey) >= 0) {
+    if (arry.indexOf(this.data.searchKey) < 0) {
       arry.push(this.data.searchKey);
       this.setData({
         searchWords: arry

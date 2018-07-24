@@ -8,26 +8,43 @@ Page({
     logo: '',
     bannerList: [],
     bannerDes: '',
-    cityCode: '110100',
+    city: {},
     hotProjects: [],
-    projectList:[],
+    projectList: [],
     prev: 42,
     next: 206,
-    current:0,
+    current: 0,
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function() {
+  onLoad: function () {
+    wx.getStorage({
+      key: 'city',
+      success: (res) => {
+        this.setData({
+          city: res.data
+        });
+      },
+      complete: () => {
+        if (!this.data.city.code) {
+          this.getGeo();
+        } else {
+          this.init();
+        }
+      }
+    });
+  },
+  init() {
     this.getLogo();
     this.getBanner();
     this.getHotProject();
-    this.getProject(this.data.cityCode);
+    this.getProject(this.data.city.code)
   },
-  getLogo: function() {
+  getLogo: function () {
     fetch('image/getlogo', 'POST', {
       is_online: 1
     }).then(res => {
@@ -41,6 +58,9 @@ Page({
       type: 42,
       is_online: 1
     }).then(res => {
+      if (!res.result.list.length) {
+        return;
+      }
       this.setData({
         bannerList: res.result.list,
         bannerDes: res.result.list[0].des || ''
@@ -51,7 +71,25 @@ Page({
     fetch('city/iptocity', 'POST').then(json => {
       if (json.result.local_city_code) {
         const code = json.result.local_city_code;
-        console.log(code);
+        const name = json.result.local_city_name;
+        wx.setStorage({
+          key: 'city',
+          data: {
+            code: code,
+            name: name
+          }
+        });
+        this.setData({
+          city: {
+            code: code,
+            name: name
+          }
+        });
+        this.init();
+      } else {
+        wx.navigateTo({
+          url: '../city/city'
+        });
       }
 
     }).catch(data => {
@@ -86,25 +124,39 @@ Page({
     fetch('project/promotelist', 'POST', {
       is_online: 1,
       is_nationwide: 0,
-      provinceid: this.data.cityCode.slice(0, 2) + '0000'
+      provinceid: this.data.city.code.slice(0, 2) + '0000'
     }).then(res => {
+      if (!res.result.list.length) {
+        return;
+      }
       this.setData({
         hotProjects: res.result.list
       });
     })
   },
   getProject(code) {
-    fetch('city/maplist','POST', {
+    fetch('city/maplist', 'POST', {
       code: code * 1,
       is_online: 1,
       domain: ''
     }).then(json => {
+      if (!json.result.list.length || !json.result.list[0].project_list.length) {
+        wx.navigateTo({
+          url: '../city/city'
+        });
+        return;
+      }
       this.setData({
         projectList: json.result.list[0].project_list
       });
     }).catch(data => {
       console.log(data);
-     });
+    });
   },
-  
+  toTel:function(e){
+    var telphone = e.currentTarget.dataset.tel;
+    wx.makePhoneCall({
+      phoneNumber: telphone,
+    });
+  }
 })
