@@ -1,0 +1,11 @@
+<!--components/design/design.wxml-->
+<view id="design" class='design-box'>
+  <view class='hd'>
+    <text class='h2'>{{info.ctitle}}</text>
+    <text class='sub-title'>{{info.etitle}}</text>
+  </view>
+  <view class='bd'>
+    <image class='img' bindtap='preview' src="{{imgUrl}}"></image>
+    <text class='des'>{{content}}</text>
+  </view>
+</view>

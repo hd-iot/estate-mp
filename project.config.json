@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -48,10 +48,16 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "detail",
 					"pathName": "pages/detail/detail",
-					"query": ""
+					"query": "domain=zcssj"
+				},
+				{
+					"id": -1,
+					"name": "album",
+					"pathName": "pages/album/album",
+					"query": "domain=zcssj"
 				}
 			]
 		}

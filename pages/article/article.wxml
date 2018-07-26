@@ -1,0 +1,7 @@
+<!--pages/article/article.wxml-->
+<view class='article-box'>
+  <view class='summary'>
+    <text class='h2'>{{title}}</text>
+  </view>
+  <rich-text class='content' nodes="{{content}}"></rich-text>
+</view>

@@ -1,7 +1,7 @@
 var getImageUrl = function(list) {
   var data;
-  list.forEach(function(item){
-    if (item.type === 2){
+  list.forEach(function(item) {
+    if (item.type === 2) {
       data = item;
     }
   });
@@ -10,7 +10,18 @@ var getImageUrl = function(list) {
   } else {
     return '';
   }
+};
+var substr = function(value, len, prefix) {
+  if(!value){return ''};
+  var leng = len ? len : 19;
+  prefix = prefix || '...';
+  if (value.length <= leng) {
+    return value;
+  } else {
+    return value.substring(0, leng) + prefix;
+  }
 }
 module.exports = {
-  getImageUrl: getImageUrl
+  getImageUrl: getImageUrl,
+  substr: substr
 }

@@ -1,0 +1,41 @@
+/* components/design/design.wxss */
+
+.design-box {
+  padding: 50rpx 0 60rpx;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.hd {
+  margin-bottom: 26rpx;
+  padding: 0 41rpx;
+}
+
+.hd .h2 {
+  font-weight: bold;
+  font-size: 44rpx;
+  line-height: 62rpx;
+  color: #424242;
+  display: block;
+}
+
+.hd .sub-title {
+  color: #c7c7c7;
+  font-size: 32rpx;
+  line-height: 45rpx;
+}
+.bd{
+  padding: 0 41rpx;
+  font-size: 0;
+}
+.bd .img {
+  width: 100%;
+  display: block;
+  margin-bottom: 16.5rpx;
+  border-radius: 6rpx;
+}
+
+.bd .des {
+  color: #909090;
+  font-size: 26rpx;
+  line-height: 37rpx;
+}

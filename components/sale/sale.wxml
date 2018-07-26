@@ -1,0 +1,19 @@
+<!--components/sale/sale.wxml-->
+<view id="sale" class='sale-box'>
+  <view class='hd'>
+    <text class='h2'>{{info.ctitle}}</text>
+    <text class='sub-title'>{{info.etitle}}</text>
+  </view>
+  <view class='bd'>
+    <view class='tabs-nav-wrap'>
+      <view class='tabs-nav'>
+        <view wx:for="{{list}}" wx:key="{{item.id}}" wx:for-index="idx" class="li {{current === idx ? 'active' : ''}}">
+          <text>{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='tab-content'>
+      <image class='view' wx:if="{{image}}" src="{{image}}"></image>
+    </view>
+  </view>
+</view>

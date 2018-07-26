@@ -19,7 +19,7 @@
       <text>共找到{{total}}个结果</text>
     </view>
     <view class='results'>
-      <navigator hover-class="none" class='result-item' wx:for="{{list}}" wx:key="{{item.domain}}">
+      <navigator url="{{'/pages/detail/detail?domain='+item.domain}}" hover-class="none" class='result-item' wx:for="{{list}}" wx:key="{{item.domain}}">
         <view class='thumbnail '>
           <image wx:if="{{item.photo}}" lazy-load="true" src="{{item.photo}}"></image>
         </view>

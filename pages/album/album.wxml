@@ -1,0 +1,7 @@
+<!--pages/album/album.wxml-->
+<view class='album-wrapper'>
+  <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap='preview' class='album-item'>
+    <image src='{{item.cover_image.show_image_url}}' mode='aspectFill'></image>
+    <text>{{item.name}}</text>
+  </view>
+</view>

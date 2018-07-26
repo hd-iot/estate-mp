@@ -1,0 +1,68 @@
+/* components/sale/sale.wxss */
+
+.sale-box {
+  padding: 50rpx 0 60rpx;
+}
+
+.hd {
+  margin-bottom: 16rpx;
+  padding: 0 41rpx;
+}
+
+.hd .h2 {
+  font-weight: bold;
+  font-size: 44rpx;
+  line-height: 62rpx;
+  color: #424242;
+  display: block;
+}
+
+.hd .sub-title {
+  color: #c7c7c7;
+  font-size: 32rpx;
+  line-height: 45rpx;
+}
+
+.bd {
+  padding: 0 41rpx;
+  font-size: 0;
+  position: relative;
+}
+
+.tabs-nav-wrap {
+  margin-bottom: 17rpx;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.tabs-nav {
+  color: #c1c1c1;
+  font-size: 36rpx;
+  line-height: 50rpx;
+  display: flex;
+}
+
+.tabs-nav .li {
+  text-align: center;
+  position: relative;
+  width: 147rpx;
+  padding-bottom: 20rpx;
+  margin-right: 63rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tabs-nav .li.active{
+  color: #4a4a4a;
+}
+.tabs-nav .li.active::after{
+  content: " ";
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 2rpx;
+  background-color: #409eff;
+  bottom: 0;
+  z-index: 111;
+}
