@@ -1,0 +1,12 @@
+<template name="moduleTitle">
+  <view class='hd'>
+    <text class='h2'>{{ctitle}}</text>
+    <text class='sub-title'>{{etitle}}</text>
+  </view>
+</template>
+<template name="contentInfo">
+  <view class='info'>
+    <text class='h3'>{{title}}</text>
+    <text class='abstract'>{{abstract}}</text>
+  </view>
+</template>

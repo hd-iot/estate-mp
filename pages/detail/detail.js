@@ -11,7 +11,7 @@ Page({
     bannerImg: '',
     queues: ['news', 'design', 'period', 'garden', 'decoration', 'club', 'community', 'metro', 'surrounding', 'service', 'link'],
     loadMap: {
-      news: false,
+      news: true,
       design: false,
       period: false,
       garden: false,

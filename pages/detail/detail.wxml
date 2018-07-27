@@ -50,4 +50,16 @@
   <block wx:if="{{domain&&list.proj_period.hasData&&loadMap.period}}">
     <sale domain="{{domain}}" info="{{list.proj_period}}"></sale>
   </block>
+  <block wx:if="{{domain&&list.proj_garden.hasData&&loadMap.garden}}">
+    <garden domain="{{domain}}" info="{{list.proj_garden}}"></garden>
+  </block>
+  <block wx:if="{{domain&&list.proj_decoration.hasData&&loadMap.decoration}}">
+    <decoration domain="{{domain}}" info="{{list.proj_decoration}}"></decoration>
+  </block>
+  <block wx:if="{{domain&&list.proj_club.hasData&&loadMap.club}}">
+    <club domain="{{domain}}" info="{{list.proj_club}}"></club>
+  </block>
+  <block wx:if="{{domain&&list.proj_community.hasData&&loadMap.community}}">
+    <community domain="{{domain}}" info="{{list.proj_community}}"></community>
+  </block>
 </view>

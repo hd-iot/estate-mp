@@ -11,3 +11,65 @@ view{
   justify-content: space-between;
   box-sizing: border-box;
 }
+
+.module-box {
+  padding: 50rpx 0 60rpx;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+.hd {
+  margin-bottom: 26rpx;
+  padding: 0 41rpx;
+}
+
+.hd .h2 {
+  font-weight: bold;
+  font-size: 44rpx;
+  line-height: 62rpx;
+  color: #424242;
+  display: block;
+}
+
+.hd .sub-title {
+  color: #c7c7c7;
+  font-size: 32rpx;
+  line-height: 45rpx;
+}
+.bd {
+  padding: 0 41rpx;
+  font-size: 0;
+  position: relative;
+}
+.swiper-wrapper{
+  height: 441.5rpx;
+}
+.bd .swiper-item{
+  border-radius: 3px;
+}
+.bd .swiper-item .view {
+  height: 441.5rpx;
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bd .info .h3 {
+  margin-top: 10rpx;
+  font-size:36rpx;
+	line-height: 50rpx;
+  overflow: hidden;
+  color: #424242;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.bd .info .abstract {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 38rpx;
+  color:#909090;
+	font-size: 26rpx;
+}

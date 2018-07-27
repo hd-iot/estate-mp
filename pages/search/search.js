@@ -78,6 +78,9 @@ Page({
   clickSearch(e){
     var key = e.currentTarget.dataset.key;
     this.doSearch(key);
+    this.setData({
+      searchKey:key
+    });
   },
   doSearch: function(key) {
     this.setData({

@@ -1,0 +1,32 @@
+<!--components/decoration/decoration.wxml-->
+<wxs module="foo">
+  var filterHtml = function(html) {
+    var reg = getRegExp('<br(\/)*>','gi');
+    var str = html.replace(reg, '');
+    return str;
+  };
+  module.exports = {
+    filterHtml: filterHtml,
+  }
+</wxs>
+<view id="decoration" class='decoration-box'>
+  <view class='hd'>
+    <text class='h2'>{{info.ctitle}}</text>
+    <text class='sub-title'>{{info.etitle}}</text>
+  </view>
+  <view class='bd'>
+    <swiper class='decoration-swiper' previous-margin="40rpx" next-margin="30rpx">
+      <block wx:for="{{list}}" wx:key="{{item.id}}">
+        <swiper-item>
+          <view class='decoration-item' data-item="{{item}}" bindtap='preview'>
+            <image wx:if="{{item.image_list.length}}" src="{{item.image_list[0].show_image_url}}"></image>
+            <view class='info'>
+              <text class='h3'>{{item.title}}</text>
+              <rich-text class='abstract' nodes="{{foo.filterHtml(item.content)}}"></rich-text>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

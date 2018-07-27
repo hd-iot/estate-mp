@@ -7,13 +7,31 @@
   <view class='bd'>
     <view class='tabs-nav-wrap'>
       <view class='tabs-nav'>
-        <view wx:for="{{list}}" wx:key="{{item.id}}" wx:for-index="idx" class="li {{current === idx ? 'active' : ''}}">
+        <view wx:for="{{list}}" bindtap='chosenPeriod' data-index="{{idx}}" wx:key="{{item.id}}" wx:for-index="idx" class="li {{current === idx ? 'active' : ''}}">
           <text>{{item.title}}</text>
         </view>
       </view>
     </view>
     <view class='tab-content'>
-      <image class='view' wx:if="{{image}}" src="{{image}}"></image>
+      <image class='view' bindtap='preview' data-src="{{image}}" wx:if="{{image}}" src="{{image}}"></image>
+      <view class='table'>
+        <view class='thead'>
+          <view class='th'>楼栋</view>
+          <view class='th'>动态</view>
+          <view class='th'> 存量</view>
+          <view class='th'>户型</view>
+          <view class='th' style='padding-right: 40rpx;'>均价</view>
+        </view>
+        <view class='tbody'>
+          <view class='tr' wx:if="{{idx < 3}}" wx:for="{{list[current].placeinfo_list}}" wx:for-index="idx" wx:key="{{idx}}">
+            <view class='td'>{{item.title}}</view>
+            <view class='td'>{{item.sale_dynamics}}</view>
+            <view class='td'>{{item.sale_left}}</view>
+            <view class='td'>{{item.layout_list.length ? item.layout_list.length + '套': ''}}</view>
+            <view class='td'>{{item.sale_price=='0'?'待定':item.sale_price=='-1'?'售罄':item.sale_price+'元/m²'}}</view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

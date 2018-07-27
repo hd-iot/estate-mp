@@ -67,6 +67,19 @@ Component({
       this.setData({
         image: show_image_url
       });
+    },
+    chosenPeriod(e){
+      let index = e.currentTarget.dataset.index;
+      this.setData({
+        current:index
+      });
+      this.cpuImage();
+    },
+    preview(e){
+      let src= e.currentTarget.dataset.src;
+      wx.previewImage({
+        urls: [src],
+      });
     }
   }
 })

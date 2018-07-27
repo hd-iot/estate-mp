@@ -1,4 +1,4 @@
 <!--components/swiperDots/swiper-dots.wxml-->
-<view class='dot-list' style="justifyContent:{{rAlign}}">
+<view class='dot-list' style="justify-content:{{rAlign}}">
   <view wx:for="{{total}}" class="dot {{item==current ? 'active':'' }}" wx:key="item"></view>
 </view>

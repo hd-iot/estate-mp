@@ -2,6 +2,10 @@
   "usingComponents": {
     "news": "/components/news/news",
     "design": "/components/design/design",
-    "sale": "/components/sale/sale"
+    "sale": "/components/sale/sale",
+    "garden": "/components/garden/garden",
+    "decoration": "/components/decoration/decoration",
+    "club": "/components/club/club",
+    "community": "/components/community/community"
   }
 }

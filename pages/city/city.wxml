@@ -1,7 +1,7 @@
 <!--pages/city/city.wxml-->
 <view>
   <view class='local-city'>
-    <text class='h2'>当前定位城市</text>
+    <text class='h2'>当前选择城市</text>
     <view class='loc'>
       <view class='icon'></view>
       <text>{{city.name ? city.name : '--'}}</text>

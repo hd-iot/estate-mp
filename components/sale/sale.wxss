@@ -2,6 +2,7 @@
 
 .sale-box {
   padding: 50rpx 0 60rpx;
+  border-bottom: 1rpx solid #e6e6e6;
 }
 
 .hd {
@@ -53,10 +54,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.tabs-nav .li.active{
+
+.tabs-nav .li.active {
   color: #4a4a4a;
 }
-.tabs-nav .li.active::after{
+
+.tabs-nav .li.active::after {
   content: " ";
   display: block;
   width: 100%;
@@ -65,4 +68,40 @@
   background-color: #409eff;
   bottom: 0;
   z-index: 111;
+}
+
+.tab-content .view {
+  width: 100%;
+  height: 582rpx;
+  overflow: hidden;
+  display: block;
+  border-radius: 3px;
+}
+
+.thead, .tbody .tr {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.thead .th, .tbody .td {
+  font-size: 26rpx;
+  line-height: 37rpx;
+  text-align: center;
+  padding: 20rpx 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.thead .th:first-child, .tbody .td:first-child {
+  text-align: left;
+}
+
+.thead .th:last-child, .tbody .td:last-child {
+  text-align: right;
+}
+
+.thead, .tr {
+  border-bottom: 1px solid #e6e6e6;
 }

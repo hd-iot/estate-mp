@@ -1,0 +1,18 @@
+<!--components/garden/garden.wxml-->
+<import src="../../template/template.wxml"/>
+<view id="garden" class='module-box'>
+  <template is="moduleTitle" data="{{...info}}"></template>
+  <view class='bd'>
+    <swiper class='swiper-wrapper' circular="{{true}}" bindchange='swiperChange'>
+      <block wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
+        <swiper-item>
+          <view class='swiper-item'>
+            <image wx:if="{{item.image_list.length}}"  src="{{item.image_list[0].show_image_url}}" class='view'></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <swiper-dots style="width:100%;" total="{{list.length}}" current="{{current}}" align="right"></swiper-dots>
+    <template is="contentInfo" data="{{...list[current]}}"></template>
+  </view>
+</view>

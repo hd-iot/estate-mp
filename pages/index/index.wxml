@@ -20,7 +20,7 @@
         </swiper-item>
       </block>
     </swiper>
-    <swiper-dots style="width:100%;" current="{{current}}"></swiper-dots>
+    <swiper-dots style="width:100%;" total="{{bannerList.length}}" current="{{current}}"></swiper-dots>
     <view class='banner-des'>
       <text>{{bannerDes}}</text>
     </view>
@@ -46,7 +46,7 @@
           <view class='con'>
             <view class='t2'>
               <text>{{item.name}}</text>
-              <view class='tel' data-tel="{{item.tel}}" bindtap='toTel' wx:if="{{item.tel}}"></view>
+              <view class='tel' data-tel="{{item.tel}}" catchtap='toTel' wx:if="{{item.tel}}"></view>
             </view>
             <view class='summary'>
               <text>{{item.address}}</text>
