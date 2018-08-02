@@ -20,17 +20,41 @@
           <view class='th'>动态</view>
           <view class='th'> 存量</view>
           <view class='th'>户型</view>
-          <view class='th' style='padding-right: 40rpx;'>均价</view>
+          <view class='th'>均价</view>
         </view>
         <view class='tbody'>
-          <view class='tr' wx:if="{{idx < 3}}" wx:for="{{list[current].placeinfo_list}}" wx:for-index="idx" wx:key="{{idx}}">
+          <view class='tr' wx:for="{{list[current].placeinfo_list}}" wx:for-index="idx" wx:key="{{idx}}">
             <view class='td'>{{item.title}}</view>
             <view class='td'>{{item.sale_dynamics}}</view>
-            <view class='td'>{{item.sale_left}}</view>
-            <view class='td'>{{item.layout_list.length ? item.layout_list.length + '套': ''}}</view>
+            <view class='td'>{{item.sale_left + '套'}}</view>
+            <view class='td'>{{item.layout_list.length ? item.layout_list.length: ''}}</view>
             <view class='td'>{{item.sale_price=='0'?'待定':item.sale_price=='-1'?'售罄':item.sale_price+'元/m²'}}</view>
           </view>
         </view>
+      </view>
+    </view>
+  </view>
+  <swiper class='swiper-wrapper' bindchange='swiperChange' previous-margin="40rpx" next-margin="30rpx">
+    <block wx:for="{{list[current].placeinfo_list}}" wx:for-index="idx" wx:key="{{item.id}}">
+      <swiper-item>
+        <view class='house-info-box'>
+          <view class="title {{buildingIndex==idx?'active':''}}">{{item.title}}</view>
+          <view class='con'>
+            <view class='p'>开盘时间：{{list[current].sale_time}}</view>
+            <view class='p'>销售动态：{{item.sale_dynamics}}</view>
+            <view class='p'>剩余套数：{{item.sale_left}}套</view>
+            <view class='p'>均价：{{item.sale_price=='0'?'待定':item.sale_price=='-1'?'售罄':item.sale_price+'元/m²'}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='house-type-box' wx:if="{{list[current].placeinfo_list[buildingIndex].layout_list.length}}">
+    <view class='h3'>户型</view>
+    <view class='type-img-box'>
+      <view class='t-item' wx:for="{{list[current].placeinfo_list[buildingIndex].layout_list}}" wx:for-index="idx" wx:key="{{idx}}">
+        <image data-item="{{list[current].placeinfo_list[buildingIndex].layout_list}}" bindtap='previewMulti' wx-if="{{item.image_list.length}}" src="{{item.image_list[0].show_image_url}}" class='view-type'></image>
+        <view class='p'>{{item.layout}}</view>
       </view>
     </view>
   </view>

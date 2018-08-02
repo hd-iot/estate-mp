@@ -35,7 +35,10 @@
         <view class='con-item'>
           <text class='label'>户型：</text>
           <view>
-            <text class="ly {{idx%2==0?'':'line'}}" wx:for="{{projectInfo.layout}}" wx:for-index="idx" wx:key="{{idx}}">{{item}}</text>
+            <block wx:for="{{projectInfo.layout}}" wx:for-index="idx" wx:key="{{idx}}">
+              <text class="ly {{idx%2==0?'':'line'}}">{{item}}</text>
+              <text class='br' wx:if="{{idx%2!=0}}"></text>
+            </block>
           </view>
         </view>
       </view>
@@ -62,4 +65,23 @@
   <block wx:if="{{domain&&list.proj_community.hasData&&loadMap.community}}">
     <community domain="{{domain}}" info="{{list.proj_community}}"></community>
   </block>
+  <block wx:if="{{domain&&list.proj_metro.hasData&&loadMap.metro}}">
+    <metro domain="{{domain}}" info="{{list.proj_metro}}"></metro>
+  </block>
+  <block wx:if="{{domain&&list.proj_surrounding.hasData&&loadMap.surrounding}}">
+    <surrounding domain="{{domain}}" info="{{list.proj_surrounding}}"></surrounding>
+  </block>
+  <block wx:if="{{domain&&list.proj_service.hasData&&loadMap.service}}">
+    <service domain="{{domain}}" info="{{list.proj_service}}"></service>
+  </block>
+  <view id="foot" class="foot-box">
+    <view class='phone' bindtap='toPhone'>
+      <view class='title'>销售电话</view>
+      <view class='num'>
+        <text>{{projectInfo.tel}}</text>
+        <view class='tel'></view>
+      </view>
+    </view>
+    <navigator url="{{'/pages/book/book?title=navigate&domain='+domain}}" class="book" hover-class="none">预约看房</navigator>
+  </view>
 </view>

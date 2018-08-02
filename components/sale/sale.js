@@ -19,6 +19,7 @@ Component({
   data: {
     list: [],
     current: 0,
+    buildingIndex:0,
     image: ''
   },
 
@@ -71,7 +72,8 @@ Component({
     chosenPeriod(e){
       let index = e.currentTarget.dataset.index;
       this.setData({
-        current:index
+        current:index,
+        buildingIndex:0
       });
       this.cpuImage();
     },
@@ -79,6 +81,23 @@ Component({
       let src= e.currentTarget.dataset.src;
       wx.previewImage({
         urls: [src],
+      });
+    },
+    previewMulti(e){
+      let list = e.currentTarget.dataset.item;
+      let urls = [];
+      list.forEach(item => {
+        if (item.image_list.length) {
+          urls.push(item.image_list[0].show_image_url);
+        }
+      });
+      wx.previewImage({
+        urls: urls,
+      });
+    },
+    swiperChange(e){
+      this.setData({
+        buildingIndex: e.detail.current
       });
     }
   }

@@ -1,5 +1,4 @@
 <!--components/community/community.wxml-->
-<!--components/club/club.wxml-->
 <import src="../../template/template.wxml"/>
 <view id="community" class='module-box'>
   <template is="moduleTitle" data="{{...info}}"></template>

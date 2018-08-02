@@ -216,6 +216,12 @@ Page({
     });
   },
 
+  toPhone:function(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.projectInfo.tel
+    });
+  },
+
   /**
    * 页面上拉触底事件的处理函数
    */

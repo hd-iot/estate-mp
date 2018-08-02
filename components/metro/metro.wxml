@@ -1,0 +1,65 @@
+<!--components/metro/metro.wxml-->
+<import src="../../template/template.wxml" />
+<view id="metro" class='module-box'>
+  <template is="moduleTitle" data="{{...info}}"></template>
+  <view class='bd'>
+    <view class='tabs-nav-wrap'>
+      <view class='tabs-nav' style="width:{{210*len}}rpx">
+        <view wx:for="{{tabs}}" wx:if="{{item.flag}}" bindtap='changeTab' data-tab="{{item.tab_name}}" wx:key="{{item.id}}" wx:for-index="idx" class="li {{current === item.tab_name ? 'active' : ''}}">
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+
+    </view>
+    <view class='tab-content' wx:if="{{current=='metro'}}">
+      <image class="view" wx-if="{{metroData.image_list.length}}" mode='widthFix' src="{{metroData.image_list[0].show_image_url}}" bindtap='preview' data-src="{{metroData.image_list[0].show_image_url}}"></image>
+      <rich-text class='rich-text' nodes="{{metroData.content}}"></rich-text>
+    </view>
+    <view class='tab-content' wx:if="{{current=='bus'}}">
+      <image class="view" wx-if="{{busData.leftimage}}" mode='widthFix' src="{{busData.leftimage.show_image_url}}" bindtap='preview' data-src="{{busData.leftimage.show_image_url}}"></image>
+      <view class='tra-detail-wrap'>
+        <view class='item-box-outer' wx:if="{{busData.data.length}}">
+          <view class='item-box' wx:for="{{busData.data}}" wx:for-index="idx" wx:key="{{idx}}">
+            <view class='h2'>{{item.name}}</view>
+            <view class='list-box'>
+              <view class='li' data-src="{{litem.show_image_url}}" bindtap='preview' wx:for="{{item.image_list}}" wx:key="{{litem.des}}" wx:for-item="litem">{{litem.des}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='tab-content' wx:if="{{current=='floor'}}">
+      <swiper class='swiper-wrapper' bindchange='swiperChange'>
+        <swiper-item wx-if="{{floorData.leftImage}}">
+          <view class='swiper-item' data-item="{{floorData}}" bindtap='previewMulti'>
+            <image class='view' mode='widthFix' src="{{floorData.leftImage.show_image_url}}"></image>
+          </view>
+        </swiper-item>
+        <swiper-item wx-if="{{floorData.rightImage}}">
+          <view class='swiper-item' data-item="{{floorData}}" bindtap='previewMulti'>
+            <image class='view' mode='widthFix' src="{{floorData.rightImage.show_image_url}}"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+      <swiper-dots style="width:100%;" total="{{2}}" current="{{currentIndex}}"></swiper-dots>
+    </view>
+    <view class='tab-content' wx:if="{{current=='self_setting1'}}">
+      <view class='self-setting'>
+        <image class='view' mode='widthFix' wx:if="{{self_setting1Data.image_list.length}}" src="{{self_setting1Data.image_list[0].show_image_url}}"></image>
+      </view>
+      <rich-text class='con' nodes="{{self_setting1Data.content}}"></rich-text>
+    </view>
+    <view class='tab-content' wx:if="{{current=='self_setting2'}}">
+      <view class='self-setting'>
+        <image class='view' mode='widthFix' wx:if="{{self_setting2Data.image_list.length}}" src="{{self_setting2Data.image_list[0].show_image_url}}"></image>
+      </view>
+      <rich-text class='con' nodes="{{self_setting2Data.content}}"></rich-text>
+    </view>
+    <view class='tab-content' wx:if="{{current=='self_setting3'}}">
+      <view class='self-setting'>
+        <image class='view' mode='widthFix' wx:if="{{self_setting3Data.image_list.length}}" src="{{self_setting3Data.image_list[0].show_image_url}}"></image>
+      </view>
+      <rich-text class='con' nodes="{{self_setting3Data.content}}"></rich-text>
+    </view>
+  </view>
+</view>

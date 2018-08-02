@@ -6,6 +6,9 @@
     "garden": "/components/garden/garden",
     "decoration": "/components/decoration/decoration",
     "club": "/components/club/club",
-    "community": "/components/community/community"
+    "community": "/components/community/community",
+    "metro": "/components/metro/metro",
+    "surrounding": "/components/surrounding/surrounding",
+    "service": "/components/service/service"
   }
 }

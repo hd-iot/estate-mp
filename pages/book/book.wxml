@@ -1,0 +1,18 @@
+<!--pages/book/book.wxml-->
+<view class='book-detail-wrap'>
+  <form bindsubmit='toSubmit'>
+    <view class='book-box'>
+      <view class='section'>
+        <input placeholder='姓名' data-key="name" bindinput='onInput'></input>
+      </view>
+      <view class='section'>
+        <input type='number' placeholder='手机号' maxlength='11' data-key="mobile" bindinput='onInput'></input>
+      </view>
+      <view class='section'>
+        <input placeholder='输入验证码' style='width:400rpx;' data-key="code" bindinput='onInput'></input>
+        <button disabled='{{!bookingForm.mobile||countdown>0}}' bindtap='getCode' class='code-btn'>{{codeTitle}}</button>
+      </view>
+    </view>
+    <button class='submit' disabled='{{preventPost}}' form-type='submit'>立即预约</button>
+  </form>
+</view>

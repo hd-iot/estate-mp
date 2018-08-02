@@ -18,11 +18,21 @@ Component({
    */
   data: {
     list: [],
+    pixelRatio:2,
+    pHeight:836,
+    height:252,
   },
   attached: function () {
     if (!this.data.domain) {
       return;
     }
+    wx.getSystemInfo({
+      success: (res)=> {
+        this.setData({
+          pixelRatio: res.pixelRatio
+        });
+      },
+    })
     fetch('decoration/lists', 'POST', {
       domain: this.data.domain,
       is_online: 1,
@@ -31,6 +41,7 @@ Component({
         this.setData({
           list: json.result.data
         });
+        this.setHeight(0);
       }
     });
   },
@@ -53,6 +64,25 @@ Component({
       wx.previewImage({
         urls: urls,
       });
+    },
+    swiperChange(e){
+      let index = e.detail.current;
+      this.setHeight(index);
+    },
+    setHeight(index){
+      let pixelRatio = this.data.pixelRatio;
+      let id = '#item-' + index;
+      let query = wx.createSelectorQuery().in(this);
+      setTimeout(() => {
+        query.select(id).boundingClientRect().exec((res) => {
+          let height = res[0].height * pixelRatio;
+          console.log(height);
+          this.setData({
+            pHeight: 528 + 20 + height,
+            height: height
+          });
+        });
+      }, 100);
     }
   }
 })

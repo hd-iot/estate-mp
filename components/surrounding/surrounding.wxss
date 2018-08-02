@@ -1,0 +1,7 @@
+/* components/surrounding/surrounding.wxss */
+@import "/app.wxss";
+.bd map{
+  width: 668rpx;
+	height: 500rpx;
+	margin-bottom: 30rpx;
+}

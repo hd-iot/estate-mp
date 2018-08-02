@@ -1,0 +1,60 @@
+<!--components/service/service.wxml-->
+<import src="../../template/template.wxml" />
+<view id="service" class='module-box'>
+  <template is="moduleTitle" data="{{...info}}"></template>
+  <view class='bd'>
+    <view class='tabs-nav-wrap'>
+      <view class='tabs-nav' style="width:{{210*len}}rpx">
+        <view wx:for="{{tabs}}" wx:if="{{item.flag}}" bindtap='changeTab' data-tab="{{item.tab_name}}" wx:key="{{item.id}}" wx:for-index="idx" class="li {{current === item.tab_name ? 'active' : ''}}">
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+
+    </view>
+    <view class='tab-content'>
+      <view wx:if="{{current=='butler'}}">
+        <image mode='widthFix' class='view' wx-if="{{butlerData.image_list.length}}" bindtap="preview" data-src="{{butlerData.image_list[0].show_image_url}}" src="{{butlerData.image_list[0].show_image_url}}"></image>
+      </view>
+      <view wx:if="{{current=='hdletter'}}" class='home-letter-box'>
+        <view class='letter-box' wx:for="{{letterList}}" wx:for-index="idx" wx:key="{{idx}}">
+          <image mode='widthFix' class='view' wx-if="{{item.image_list.length}}" src="{{item.image_list[0].show_image_url}}" bindtap="preview" data-src="{{item.image_list[0].show_image_url}}"></image>
+          <view class="txt">{{item.title}}</view>
+        </view>
+      </view>
+      <view wx:if="{{current=='notice'}}">
+        <image mode='widthFix' class='view' wx-if="{{noticeData.image_list.length}}" bindtap="preview" data-src="{{noticeData.image_list[0].show_image_url}}" src="{{noticeData.image_list[0].show_image_url}}"></image>
+      </view>
+      <view wx:if="{{current=='activity'}}">
+        <image mode='widthFix' class='view' wx-if="{{activityData.image_list.length}}" bindtap="preview" data-src="{{activityData.image_list[0].show_image_url}}" src="{{activityData.image_list[0].show_image_url}}"></image>
+        <view class='h2'>{{activityData.title}}</view>
+        <rich-text class='ac-content' nodes="{{activityData.content}}"></rich-text>
+      </view>
+      <view wx:if="{{current=='contacts'}}">
+        <form bindsubmit='onSubmit'>
+          <view class='section'>
+            <textarea placeholder="请输入您的宝贵意见" data-key="content" bindinput='onInput' class='suggestion'></textarea>
+          </view>
+          <view class='section in-sec'>
+            <input type='text' class='inline-input input' data-key="name" bindinput='onInput' placeholder="姓名"></input>
+            <input type='number' class='inline-input input' data-key="room_num" bindinput='onInput' placeholder="请输入房号"></input>
+          </view>
+          <view class='section'>
+            <input type='number' maxlength="11" data-key="contacts" bindinput='onInput' class='contacts input' placeholder="请输入联系方式"></input>
+          </view>
+          <view class='section'>
+            <button form-type="submit" class='submit'>提交</button>
+          </view>
+        </form>
+      </view>
+      <view wx:if="{{current=='self_setting1'}}">
+        <image mode='widthFix' class='view' wx-if="{{self_setting1Data.image_list.length}}" bindtap="preview" data-src="{{self_setting1Data.image_list[0].show_image_url}}" src="{{self_setting1Data.image_list[0].show_image_url}}"></image>
+      </view>
+      <view wx:if="{{current=='self_setting2'}}">
+        <image mode='widthFix' class='view' wx-if="{{self_setting2Data.image_list.length}}" bindtap="preview" data-src="{{self_setting2Data.image_list[0].show_image_url}}" src="{{self_setting2Data.image_list[0].show_image_url}}"></image>
+      </view>
+      <view wx:if="{{current=='self_setting3'}}">
+        <image mode='widthFix' class='view' wx-if="{{self_setting3Data.image_list.length}}" bindtap="preview" data-src="{{self_setting3Data.image_list[0].show_image_url}}" src="{{self_setting3Data.image_list[0].show_image_url}}"></image>
+      </view>
+    </view>
+  </view>
+</view>

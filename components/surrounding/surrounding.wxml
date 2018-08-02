@@ -1,0 +1,8 @@
+<!--components/surrounding/surrounding.wxml-->
+<import src="../../template/template.wxml"/>
+<view id="surrounding" class='module-box'>
+  <template is="moduleTitle" data="{{...info}}"></template>
+  <view class='bd'>
+    <map id="map" latitude="{{latitude}}" scale="14" markers="{{markers}}" longitude="{{longitude}}"></map>
+  </view>
+</view>

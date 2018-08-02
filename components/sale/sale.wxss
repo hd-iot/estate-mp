@@ -105,3 +105,93 @@
 .thead, .tr {
   border-bottom: 1px solid #e6e6e6;
 }
+
+.swiper-wrapper {
+  height: 340rpx;
+  margin-top: 40rpx;
+}
+
+.swiper-wrapper .house-info-box {
+  background-color: #fff;
+  border-radius: 6rpx;
+  width: 668rpx;
+}
+
+.swiper-wrapper .house-info-box .title {
+  overflow: hidden;
+  height: 69rpx;
+  background-color: rgba(197, 191, 130, 0.5);
+  font-size: 36rpx;
+  color: #fff;
+  padding: 0 29rpx;
+  border-top-left-radius: 6rpx;
+  border-top-right-radius: 6rpx;
+  line-height: 69rpx;
+}
+
+.swiper-wrapper .house-info-box .title.active {
+  background-color: #c5b582;
+}
+
+.swiper-wrapper .house-info-box .con {
+  padding: 27rpx 30rpx 25rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  line-height: 46rpx;
+  color: #424242;
+  box-shadow: 0 8rpx 17rpx 0 rgba(0, 0, 0, 0.06);
+  border-bottom-left-radius: 6rpx;
+  border-bottom-right-radius: 6rpx;
+}
+
+.swiper-wrapper .house-info-box .con .p {
+  margin-bottom: 8rpx;
+}
+
+.house-type-box {
+  margin-top: 60rpx;
+  padding: 56rpx 41rpx;
+  position: relative;
+}
+.house-type-box::before{
+  height: 1rpx;
+  content: ' ';
+  background-color: #e6e6e6;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 41rpx;
+  right: 41rpx;
+}
+
+.house-type-box .h3 {
+  margin-bottom: 50rpx;
+  font-size: 36rpx;
+  line-height: 50rpx;
+}
+
+.house-type-box .type-img-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.house-type-box .type-img-box .t-item {
+  flex: 0 0 33.3%;
+  margin-bottom: 39rpx;
+  text-align: center;
+  color: #424242;
+  font-size: 26rpx;
+  line-height: 46rpx;
+}
+
+.house-type-box .type-img-box .t-item .view-type {
+  width: 100%;
+  height: 150rpx;
+  display: block;
+  margin: 0 auto 25rpx;
+}
+
+.house-type-box .type-img-box .t-item .p {
+  padding: 0 10rpx;
+}

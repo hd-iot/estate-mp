@@ -24,12 +24,12 @@
 }
 
 .decoration-swiper {
-  height: 836rpx;
+  /* height: 836rpx; */
 }
 
 .decoration-swiper image {
   width: 668rpx;
-  height: 527.5rpx;
+  height: 528rpx;
   border-top-left-radius: 6rpx;
   border-top-right-radius: 6rpx;
 }
@@ -54,11 +54,11 @@
 }
 
 .decoration-swiper .info .abstract {
-  overflow: hidden;
+  /* overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 4; */
   line-height: 38rpx;
 }
 
