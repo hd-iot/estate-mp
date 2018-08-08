@@ -3,7 +3,7 @@
 <view id="club" class='module-box'>
   <template is="moduleTitle" data="{{...info}}"></template>
   <view class='bd'>
-    <swiper class='swiper-wrapper' circular="{{true}}" bindchange='swiperChange'>
+    <swiper class='swiper-wrapper' duration="300" circular="{{true}}" bindchange='swiperChange'>
       <block wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
         <swiper-item>
           <view class='swiper-item'>

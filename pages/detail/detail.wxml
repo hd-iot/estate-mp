@@ -50,8 +50,8 @@
   <block wx:if="{{domain&&list.proj_design.hasData&&loadMap.design}}">
     <design domain="{{domain}}" info="{{list.proj_design}}"></design>
   </block>
-  <block wx:if="{{domain&&list.proj_period.hasData&&loadMap.period}}">
-    <sale domain="{{domain}}" info="{{list.proj_period}}"></sale>
+  <block wx:if="{{domain&&list.proj_period.hasData}}">
+    <sale style="display:{{loadMap.period?'block':'none'}}" domain="{{domain}}" info="{{list.proj_period}}"></sale>
   </block>
   <block wx:if="{{domain&&list.proj_garden.hasData&&loadMap.garden}}">
     <garden domain="{{domain}}" info="{{list.proj_garden}}"></garden>

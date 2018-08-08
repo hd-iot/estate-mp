@@ -5,7 +5,7 @@
     <text class='sub-title'>{{info.etitle}}</text>
   </view>
   <view class='bd'>
-    <swiper class='news-swiper' previous-margin="40rpx" next-margin="30rpx">
+    <swiper class='news-swiper' duration="400" previous-margin="40rpx" next-margin="30rpx">
       <block wx:for="{{list}}" wx:key="{{item.id}}">
         <swiper-item>
           <view class='news-item' data-article="{{item}}" bindtap='toDetail'>

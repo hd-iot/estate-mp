@@ -22,7 +22,7 @@ view.search-icon{
 #search {
   width: 480rpx;
   box-sizing: border-box;
-  font-size: 44rpx;
+  font-size: 42rpx;
   color: #424242;
   vertical-align: middle;
   display: inline-block;

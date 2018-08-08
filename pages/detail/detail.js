@@ -55,7 +55,7 @@ Page({
         id: 1,
         ctitle: '楼盘资讯',
         etitle: 'News',
-        hasData: false,
+        hasData: true,
         moduleName: 'News'
       },
       proj_design: {

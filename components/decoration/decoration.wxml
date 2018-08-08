@@ -15,7 +15,7 @@
     <text class='sub-title'>{{info.etitle}}</text>
   </view>
   <view class='bd'>
-    <swiper class='decoration-swiper' bindchange='swiperChange' previous-margin="40rpx" next-margin="30rpx" style='height:{{pHeight}}rpx;'>
+    <swiper class='decoration-swiper' duration="600" bindchange='swiperChange' previous-margin="40rpx" next-margin="30rpx" style='height:{{pHeight}}rpx;'>
       <block wx:for="{{list}}" wx:key="{{item.id}}" wx:for-index="idx">
         <swiper-item>
           <view class='decoration-item' data-item="{{item}}" bindtap='preview'>

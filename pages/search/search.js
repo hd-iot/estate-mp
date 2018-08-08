@@ -1,5 +1,6 @@
 // pages/search/search.js
 const fetch = require('../../utils/request.js');
+const PREFIX = 'http://house-mobile.evergrande.cn/api/index.php/';
 Page({
 
   /**
@@ -10,6 +11,7 @@ Page({
     hasSearched: false,
     searchKey: '',
     list: [],
+    requestTask:null,
     searchWords: []
   },
 
@@ -83,6 +85,12 @@ Page({
     });
   },
   doSearch: function(key) {
+    if (this.data.requestTask) {
+      this.data.requestTask.abort();
+      this.setData({
+        requestTask: null
+      });
+    }
     this.setData({
       hasSearched: true
     });
@@ -91,30 +99,33 @@ Page({
       limit: 100,
       is_online: 1
     }).then(json => {
-      var arry = [];
-      if (json.result.data.length) {
-        json.result.data.forEach(item => {
-          if (item.image_list) {
-            let photoData = item.image_list.find((x) => x.type === 2);
-            if (photoData) {
-              item.photo = photoData.show_image_url;
-            } else {
-              item.photo = '';
-            }
-          } else {
-            item.photo = '';
-          }
-        });
-        arry = json.result.data;
-      }
-      this.setData({
-        total: json.result.total,
-        list: arry,
-        hasSearched: true
-      });
+      this.handleData(json);
     }).catch(msg => {
       console.log(msg);
     })
+  },
+  handleData:function(json){
+    var arry = [];
+    if (json.result.data.length) {
+      json.result.data.forEach(item => {
+        if (item.image_list) {
+          let photoData = item.image_list.find((x) => x.type === 2);
+          if (photoData) {
+            item.photo = photoData.show_image_url;
+          } else {
+            item.photo = '';
+          }
+        } else {
+          item.photo = '';
+        }
+      });
+      arry = json.result.data;
+    }
+    this.setData({
+      total: json.result.total,
+      list: arry,
+      hasSearched: true
+    });
   },
   formSubmit: function() {
     this.doSearch(this.data.searchKey);
@@ -139,6 +150,39 @@ Page({
   bindInput: function(e) {
     this.setData({
       searchKey: e.detail.value
-    })
+    });
+    if (!e.detail.value) return;
+    wx.showNavigationBarLoading();
+    if (this.data.requestTask){
+      this.data.requestTask.abort();
+      this.setData({
+        requestTask: null
+      });
+    }
+    let requestTask = wx.request({
+      url: PREFIX +'project/lists?page=1',
+      method:'POST',
+      data:{
+        name: e.detail.value,
+        limit: 10,
+        is_online: 1
+      },
+      success:(res)=>{
+        let json = null;
+        if(res.data.code==200){
+          json = res.data;
+          this.handleData(json);
+        }
+      },
+      complete:()=>{
+        wx.hideNavigationBarLoading();
+        this.setData({
+          requestTask: null
+        });
+      }
+    });
+    this.setData({
+      requestTask: requestTask
+    });
   }
 })
