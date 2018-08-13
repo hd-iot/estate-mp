@@ -1,6 +1,6 @@
 // pages/search/search.js
 const fetch = require('../../utils/request.js');
-const PREFIX = 'http://house-mobile.evergrande.cn/api/index.php/';
+const PREFIX = 'https://house-mobile.evergrande.cn/api/index.php/';
 Page({
 
   /**
